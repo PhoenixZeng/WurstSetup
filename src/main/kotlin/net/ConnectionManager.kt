@@ -34,13 +34,13 @@ object ConnectionManager {
     fun checkConnectivity(): NetStatus {
         // If google can be reached, the client is not offline
         try {
-            val json = resty.json("http://google.com")
+            val json = resty.json("http://www.baidu.com")
             if (json == null || json.toString().isBlank()) {
                 netStatus = NetStatus.CLIENT_OFFLINE
                 return netStatus
             }
         } catch (e: IOException) {
-            log.info("couldn't contact google: " + e.localizedMessage)
+            log.info("couldn't contact baidu: " + e.localizedMessage)
         }
 
         contactWurstServer("https://" + WURST_COMPILER_URL)
